@@ -6,6 +6,9 @@ interface SoundDescription {
   name: string;
   url: string;
 }
+const localSound = (fileName: string): string =>
+  `${import.meta.env.BASE_URL}sound-app/${fileName}`;
+
 const SOUNDS : SoundDescription[] = [
   {
     key: 'a',
@@ -32,92 +35,92 @@ const SOUNDS : SoundDescription[] = [
   {
     key:'q',
     name:'ahhh',
-    url:'/sound-app/ahhhhhhhh.mp3'
+    url: localSound('ahhhhhhhh.mp3')
   },
   {
     key:'w',
     name:'bruh',
-    url:'/sound-app/bruh_meme.mp3'
+    url: localSound('bruh_meme.mp3')
   },
   {
     key:'e',
     name:'core',
-    url:'/sound-app/core_transition.mp3'
+    url: localSound('core_transition.mp3')
   },
   {
     key:'r',
     name:'fahh',
-    url:'/sound-app/fahhhhh.mp3'
+    url: localSound('fahhhhh.mp3')
   },
   {
     key:'t',
     name:'fart',
-    url:'/sound-app/fart.mp3'
+    url: localSound('fart.mp3')
   },
   {
     key:'u',
     name:'fbi',
-    url:'/sound-app/fbi_open_the_door.mp3'
+    url: localSound('fbi_open_the_door.mp3')
   },
   {
     key:'i',
     name:'I-got-this',
-    url:'/sound-app/i_got_this.mp3'
+    url: localSound('i_got_this.mp3')
   },
   {
     key:'O',
     name:'nope',
-    url:'/sound-app/nope_meme.mp3'
+    url: localSound('nope_meme.mp3')
   },
   {
     key:'p',
     name:'hell-no',
-    url:'/sound-app/oh_hell_no_man.mp3'
+    url: localSound('oh_hell_no_man.mp3')
   },
   {
     key:'g',
     name:'oh-my-god-wow',
-    url:'/sound-app/oh_my_god_wow.mp3'
+    url: localSound('oh_my_god_wow.mp3')
   },
   {
     key:'h',
     name:'omaiga',
-    url:'/sound-app/omaiga_meme.mp3'
+    url: localSound('omaiga_meme.mp3')
   },
   {
     key:'j',
     name:'spider',
-    url:'/sound-app/spider_2099.mp3'
+    url: localSound('spider_2099.mp3')
   },
   {
     key:'k',
     name:'uia',
-    url:'/sound-app/uia.mp3'
+    url: localSound('uia.mp3')
   },
   {
     key:'l',
     name:'what',
-    url:'/sound-app/what.mp3'
+    url: localSound('what.mp3')
   },
   {
     key:'z',
     name:'wow',
-    url:'/sound-app/wow.mp3'
+    url: localSound('wow.mp3')
   },
   {
     key:'c',
     name:'wonk',
-    url:'/sound-app/wonk_wonk.mp3'
+    url: localSound('wonk_wonk.mp3')
   },
   {
     key:'x',
     name:'x-files',
-    url:'/sound-app/x_files.mp3'
+    url: localSound('x_files.mp3')
   },
   {
     key:'c',
     name:'yeah-bwoy',
-    url:'/sound-app/yeah_boy.mp3'
+    url: localSound('yeah_boy.mp3')
   },
   
 ];

@@ -63,6 +63,16 @@ npm run build
 npm run preview
 ```
 
+## Deploy to GitHub Pages
+
+This repository deploys with **GitHub Actions** from `.github/workflows/deploy.yml`.
+
+1. Push to `main`.
+2. In GitHub, open **Settings → Pages**.
+3. Set **Source** to **GitHub Actions**.
+
+The app is built from `my-random-site` and published to GitHub Pages.
+
 ## How It Works
 
 Sound definitions (name, key, and audio URL/path) are configured in:
