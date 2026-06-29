@@ -68,7 +68,7 @@ const SOUNDS : SoundDescription[] = [
     url: localSound('i_got_this.mp3')
   },
   {
-    key:'O',
+    key:'o',
     name:'nope',
     url: localSound('nope_meme.mp3')
   },
@@ -128,6 +128,7 @@ const SOUNDS : SoundDescription[] = [
 
 const board = document.getElementById('soundboard') as HTMLDivElement;
 console.log("found the soundboard element:", board);
+const buttonByKey = new Map<string, HTMLButtonElement>();
 
 function playSound(url: string,buttonElement: HTMLButtonElement){
   const audio = new Audio(url);
@@ -141,38 +142,25 @@ function playSound(url: string,buttonElement: HTMLButtonElement){
 }
 
 SOUNDS.forEach((sound) => {
-  
+  const normalizedKey = sound.key.toLowerCase();
   const btn = document.createElement('button');
   btn.className = 'sound-btn';
   btn.innerHTML = `
     <span class="sound-name">${sound.name}</span>
-    <kbd class="sound-key">${sound.key.toUpperCase()}</kbd>`
+    <kbd class="sound-key">${normalizedKey.toUpperCase()}</kbd>`
 
-   
-    btn.addEventListener('click',() => {
-     playSound(sound.url,btn);
-     
-     
-     //add event listner when a key is pressed
-      window.addEventListener('keydown',(event) => {
-        if (event.key.toLowerCase() === sound.key){
-          playSound(sound.url,btn); 
+  btn.addEventListener('click',() => {
+    playSound(sound.url,btn);
+  });
 
-        }
-      })
+  buttonByKey.set(normalizedKey, btn);
+  board.appendChild(btn);
+});
 
-    })
-    board.appendChild(btn)
-  
-
-
-})
 document.addEventListener('keydown', (event) => {
-  const sound = SOUNDS.find(s => s.key === event.key);
-  if (sound) {
-    const audio = new Audio(sound.url);
-    audio.currentTime = 0;
-    audio.play();
-  }
+  const pressedKey = event.key.toLowerCase();
+  const sound = SOUNDS.find(s => s.key.toLowerCase() === pressedKey);
+  const button = buttonByKey.get(pressedKey);
+  if (sound && button) playSound(sound.url, button);
 });
  
