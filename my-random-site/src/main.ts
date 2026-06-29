@@ -129,10 +129,27 @@ const SOUNDS : SoundDescription[] = [
 const board = document.getElementById('soundboard') as HTMLDivElement;
 console.log("found the soundboard element:", board);
 const buttonByKey = new Map<string, HTMLButtonElement>();
+const volumeSlider = document.getElementById('volume-slider') as HTMLInputElement;
+const volumeValue = document.getElementById('volume-value') as HTMLSpanElement;
+let currentVolume = Number(volumeSlider.value) / 100;
+
+function syncVolumeUI() {
+  const percentage = `${Math.round(currentVolume * 100)}%`;
+  volumeValue.textContent = percentage;
+  volumeSlider.style.setProperty('--volume-percentage', percentage);
+}
+
+volumeSlider.addEventListener('input', () => {
+  currentVolume = Number(volumeSlider.value) / 100;
+  syncVolumeUI();
+});
+
+syncVolumeUI();
 
 function playSound(url: string,buttonElement: HTMLButtonElement){
   const audio = new Audio(url);
   audio.currentTime = 0;
+  audio.volume = currentVolume;
   audio.play();
   buttonElement.classList.add('active');
   setTimeout(()=> {
